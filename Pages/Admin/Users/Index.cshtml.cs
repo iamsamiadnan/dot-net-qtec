@@ -1,0 +1,44 @@
+using dot_net_qtec.Models;
+using dot_net_qtec.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace dot_net_qtec.Pages.Admin.Users
+{
+    public class IndexModel : PageModel
+    {
+        private readonly SqlManager _sqlManager;
+        public IndexModel(SqlManager sqlManager)
+        {
+            _sqlManager = sqlManager;
+        }
+        public class UserDto
+        {
+            public string? FirstName { get; set; }
+            public string? LastName { get; set; }
+            public string? Email { get; set; }
+            public string? UserName { get; set; }
+        }
+
+        public List<UserDto> Users { get; set; } = new List<UserDto>();
+        public void OnGet()
+        {
+
+            Users = _sqlManager.ExecuteReader<UserDto>(
+                "SELECT * FROM ASPNETUSERS;",
+                reader => new UserDto
+                {
+                    FirstName = SqlManager.GetValue<string>(reader, "FirstName"),
+                    LastName = SqlManager.GetValue<string>(reader, "LastName"),
+                    Email = SqlManager.GetValue<string>(reader, "Email")
+                }
+            );
+
+
+            Console.WriteLine("EOF");
+
+        }
+
+
+    }
+}

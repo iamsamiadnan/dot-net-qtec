@@ -1,0 +1,19 @@
+﻿@page
+@model dot_net_qtec.Pages.Admin.Users.IndexModel
+@{
+
+    <table class="table">
+        <tbody>
+            @foreach (var User in @Model.Users)
+            {
+                <tr>
+                    <td>@User.FirstName</td>
+                    <td>@User.LastName</td>
+                    <td>@User.Email</td>
+                    <td>@User.UserName</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}

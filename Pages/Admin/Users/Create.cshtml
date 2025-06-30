@@ -1,0 +1,28 @@
+﻿@page
+@model dot_net_qtec.Pages.Admin.Users.CreateModel
+@{
+    <h1>Create User</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="_CreateUserDto.FirstName">First Name</label><br />
+            <input asp-for="_CreateUserDto.FirstName" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="_CreateUserDto.LastName">Last Name</label><br />
+            <input asp-for="_CreateUserDto.LastName" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="_CreateUserDto.UserName">User Name</label><br />
+            <input asp-for="_CreateUserDto.UserName" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="_CreateUserDto.Email">Email</label><br />
+            <input asp-for="_CreateUserDto.Email" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="_CreateUserDto.Password">Password</label><br />
+            <input asp-for="_CreateUserDto.Password" />
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+}

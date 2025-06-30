@@ -1,7 +1,26 @@
+using dot_net_qtec.Data;
+using dot_net_qtec.Models;
+using dot_net_qtec.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    options.UseSqlServer(connectionString);
+});
+
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+builder.Services.AddScoped<SqlManager>(provider =>
+{
+    var config = provider.GetRequiredService<IConfiguration>();
+    string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    return new SqlManager(connectionString!);
+});
 
 var app = builder.Build();
 
