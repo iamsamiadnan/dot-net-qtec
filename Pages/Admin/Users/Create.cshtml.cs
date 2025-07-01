@@ -44,6 +44,8 @@ namespace dot_net_qtec.Pages.Admin.Users
             if (result.Succeeded)
             {
                 Console.WriteLine("REGISTERED!");
+
+                await _userManager.AddToRoleAsync(user, "VIEWER");
             }
 
             return RedirectToPage("Index");

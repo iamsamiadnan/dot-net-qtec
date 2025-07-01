@@ -8,6 +8,14 @@
     </div>
     <table class="table">
         <tbody>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                <td>User Name</td>
+                <td>Role Name</td>
+                <td>Action</td>
+            </tr>
             @foreach (var User in @Model.Users)
             {
                 <tr>
@@ -15,6 +23,7 @@
                     <td>@User.LastName</td>
                     <td>@User.Email</td>
                     <td>@User.UserName</td>
+                    <td>@User.RoleName</td>
                     <td><a class="btn btn-primary" asp-page="Edit" asp-route-id="@User.Id">Edit</a></td>
                 </tr>
             }
