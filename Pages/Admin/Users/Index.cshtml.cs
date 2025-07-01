@@ -14,6 +14,7 @@ namespace dot_net_qtec.Pages.Admin.Users
         }
         public class UserDto
         {
+            public string? Id { get; set; }
             public string? FirstName { get; set; }
             public string? LastName { get; set; }
             public string? Email { get; set; }
@@ -28,6 +29,7 @@ namespace dot_net_qtec.Pages.Admin.Users
                 "SELECT * FROM ASPNETUSERS;",
                 reader => new UserDto
                 {
+                    Id = SqlManager.GetValue<string>(reader, "Id"),
                     FirstName = SqlManager.GetValue<string>(reader, "FirstName"),
                     LastName = SqlManager.GetValue<string>(reader, "LastName"),
                     Email = SqlManager.GetValue<string>(reader, "Email")

@@ -1,0 +1,16 @@
+﻿@page
+@model dot_net_qtec.Pages.Admin.Users.EditModel
+@{
+    <h1>Edit User</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="_EditUserDto.FirstName">First Name</label><br />
+            <input asp-for="_EditUserDto.FirstName" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="_EditUserDto.LastName">Last Name</label><br />
+            <input asp-for="_EditUserDto.LastName" />
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+}

@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>dot_net_qtec</RootNamespace>
+        <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
