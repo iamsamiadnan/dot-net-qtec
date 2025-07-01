@@ -46,7 +46,7 @@ namespace dot_net_qtec.Pages.Admin.Users
                 Console.WriteLine("REGISTERED!");
             }
 
-            return RedirectToPage("Create");
+            return RedirectToPage("Index");
         }
     }
 }

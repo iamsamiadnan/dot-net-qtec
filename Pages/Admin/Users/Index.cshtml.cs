@@ -8,6 +8,7 @@ namespace dot_net_qtec.Pages.Admin.Users
     public class IndexModel : PageModel
     {
         private readonly SqlManager _sqlManager;
+        
         public IndexModel(SqlManager sqlManager)
         {
             _sqlManager = sqlManager;
