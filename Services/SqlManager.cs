@@ -3,6 +3,7 @@ using Microsoft.Data.SqlClient;
 
 namespace dot_net_qtec.Services;
 
+
 public class SqlManager
 {
     private readonly SqlConnection _sqlConnection;
@@ -20,8 +21,6 @@ public class SqlManager
             _sqlConnection.Open();
 
         cmd.ExecuteNonQuery();
-
-        _sqlConnection.Close();
     }
 
     public List<T> ExecuteReader<T>(string query, Func<SqlDataReader, T> mapFunc, Dictionary<string, object>? parameters = null)
@@ -37,7 +36,28 @@ public class SqlManager
         return rows;
     }
 
-    private SqlCommand CreateCommand(string query, Dictionary<string, object>? parameters)
+    public void ExecuteTransaction(List<SqlCommand> sqlCommands)
+    {
+        using var transaction = _sqlConnection.BeginTransaction();
+
+        try
+        {
+            foreach (var cmd in sqlCommands)
+            {
+                cmd.Transaction = transaction;
+                cmd.ExecuteNonQuery();
+            }
+
+            transaction.Commit();
+        }
+        catch
+        {
+            transaction.Rollback();
+            throw;
+        }
+    }
+
+    public SqlCommand CreateCommand(string query, Dictionary<string, object>? parameters)
     {
         SqlCommand cmd = new SqlCommand(query, _sqlConnection);
 

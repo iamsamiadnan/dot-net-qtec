@@ -11,6 +11,27 @@
             <label asp-for="_EditUserDto.LastName">Last Name</label><br />
             <input asp-for="_EditUserDto.LastName" />
         </div>
+
+        <div class="mb-3">
+            <label asp-for="_EditUserDto.RoleId">Select Role</label>
+            @* <select asp-for="_EditUserDto.RoleName"></select> *@
+
+
+            <select asp-for="_EditUserDto.RoleId">
+                @foreach (var _Role in @Model._Roles)
+                {
+                    if (@_Role.Id == @Model._EditUserDto.RoleId)
+                    {
+                        <option value="@_Role.Id" selected>@_Role.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@_Role.Id">@_Role.Name</option>
+                    }
+                }
+            </select>
+
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 }
