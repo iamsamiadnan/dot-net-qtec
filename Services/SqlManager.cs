@@ -44,6 +44,7 @@ public class SqlManager
         {
             foreach (var cmd in sqlCommands)
             {
+                using var _ = cmd;
                 cmd.Transaction = transaction;
                 cmd.ExecuteNonQuery();
             }
