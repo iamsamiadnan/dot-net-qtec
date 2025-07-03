@@ -1,0 +1,35 @@
+﻿@page
+@model dot_net_qtec.Pages.Admin.Accounts.IndexModel
+@{
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Accounts List</h1>
+        <a class="btn btn-primary" asp-page="Create">Create Account</a>
+    </div>
+
+    <div id="jstree"></div>
+}
+
+@section Scripts {
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.17/jstree.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#jstree').jstree({
+                "core": {
+                    "data": @Html.Raw(@Model._RenderTreeJSON),
+                    "themes": {
+                        "icons": false
+                    }
+                }
+            }).bind("loaded.jstree", function (event, data) {
+                $(this).jstree("open_all");
+            });;
+
+
+        });
+    </script>
+
+
+}

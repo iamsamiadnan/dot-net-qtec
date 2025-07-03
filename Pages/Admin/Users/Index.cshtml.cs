@@ -26,7 +26,6 @@ namespace dot_net_qtec.Pages.Admin.Users
         public List<UserDto> Users { get; set; } = new List<UserDto>();
         public void OnGet()
         {
-
             Users = _sqlManager.ExecuteReader<UserDto>($@"
                 SELECT U.ID, U.FIRSTNAME, U.LASTNAME, U.EMAIL, U.USERNAME, R.NAME AS ROLENAME 
                 FROM ASPNETUSERS U 
@@ -45,7 +44,6 @@ namespace dot_net_qtec.Pages.Admin.Users
 
 
             Console.WriteLine("EOF");
-
         }
 
 

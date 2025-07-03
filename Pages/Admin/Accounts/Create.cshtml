@@ -11,6 +11,8 @@
             <label asp-for="_CreateAccountDto.ParentId">Select Parent Category</label>
 
             <select asp-for="_CreateAccountDto.ParentId">
+                <option value="#" selected>Select Category</option>
+
                 @foreach (var _ParentAccount in @Model._ParentAccounts)
                 {
                     <option value="@_ParentAccount.Id">@_ParentAccount.Name</option>

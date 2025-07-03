@@ -13,9 +13,9 @@ public class SqlManager
         _sqlConnection = new SqlConnection(connectionString);
     }
 
-    public void ExecuteNonQuery(string query, Dictionary<string, object>? parameters = null) // insert, update, delete
+    public void ExecuteNonQuery(string query, Dictionary<string, object>? parameters = null, bool isStoredProcedure = false) // insert, update, delete
     {
-        using SqlCommand cmd = CreateCommand(query, parameters);
+        using SqlCommand cmd = CreateCommand(query, parameters, isStoredProcedure);
 
         if (_sqlConnection.State != System.Data.ConnectionState.Open)
             _sqlConnection.Open();
@@ -58,9 +58,11 @@ public class SqlManager
         }
     }
 
-    public SqlCommand CreateCommand(string query, Dictionary<string, object>? parameters)
+    public SqlCommand CreateCommand(string query, Dictionary<string, object>? parameters, bool isStoredProcedure = false)
     {
         SqlCommand cmd = new SqlCommand(query, _sqlConnection);
+
+        if (isStoredProcedure) cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
         if (parameters != null)
         {
@@ -69,6 +71,8 @@ public class SqlManager
                 cmd.Parameters.Add(new SqlParameter(parameter.Key, parameter.Value));
             }
         }
+
+
 
         if (_sqlConnection.State != System.Data.ConnectionState.Open)
             _sqlConnection.Open();
