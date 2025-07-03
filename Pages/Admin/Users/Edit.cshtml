@@ -14,8 +14,6 @@
 
         <div class="mb-3">
             <label asp-for="_EditUserDto.RoleId">Select Role</label>
-            @* <select asp-for="_EditUserDto.RoleName"></select> *@
-
 
             <select asp-for="_EditUserDto.RoleId">
                 @foreach (var _Role in @Model._Roles)
