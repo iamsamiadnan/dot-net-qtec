@@ -1,11 +1,13 @@
 using System.Text.Json;
 using dot_net_qtec.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace dot_net_qtec.Pages.Accountant.Accounts
 {
+    [Authorize(Roles = "Accountant")]
     public class IndexModel : PageModel
     {
 

@@ -1,0 +1,17 @@
+﻿@page
+@model dot_net_qtec.Pages.LoginModel
+@{
+    <h1>Login</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="_LoginDto.UserName">User Name</label><br />
+            <input asp-for="_LoginDto.UserName" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="_LoginDto.Password">Password</label><br />
+            <input type="password" asp-for="_LoginDto.Password" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+}

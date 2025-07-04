@@ -1,10 +1,12 @@
 using dot_net_qtec.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace dot_net_qtec.Pages.Admin.Users
 {
+    [Authorize(Roles = "admin")]
     public class CreateModel : PageModel
     {
         private readonly UserManager<User> _userManager;

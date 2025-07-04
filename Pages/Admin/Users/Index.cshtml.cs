@@ -1,10 +1,12 @@
 using dot_net_qtec.Models;
 using dot_net_qtec.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace dot_net_qtec.Pages.Admin.Users
 {
+    [Authorize(Roles = "admin")]
     public class IndexModel : PageModel
     {
         private readonly SqlManager _sqlManager;

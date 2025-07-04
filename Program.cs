@@ -15,6 +15,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.SignIn.RequireConfirmedEmail = false;
+});
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Login";
+    options.AccessDeniedPath = "/AccessDenied";
+});
 builder.Services.AddScoped<SqlManager>(provider =>
 {
     var config = provider.GetRequiredService<IConfiguration>();

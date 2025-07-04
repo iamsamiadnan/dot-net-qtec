@@ -1,5 +1,6 @@
 using dot_net_qtec.Models;
 using dot_net_qtec.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -8,6 +9,7 @@ using Microsoft.Data.SqlClient;
 
 namespace dot_net_qtec.Pages.Admin.Users
 {
+    [Authorize(Roles = "admin")]
     public class EditModel : PageModel
     {
         private readonly SqlManager _sqlManager;
