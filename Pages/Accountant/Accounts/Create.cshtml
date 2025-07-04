@@ -1,0 +1,24 @@
+﻿@page
+@model dot_net_qtec.Pages.Accountant.Accounts.CreateModel
+@{
+    <h1>Create Account</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="_CreateAccountDto.Name">Account Name</label><br />
+            <input asp-for="_CreateAccountDto.Name" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="_CreateAccountDto.ParentId">Select Parent Account</label>
+
+            <select asp-for="_CreateAccountDto.ParentId">
+                <option value="#" selected>Select Category</option>
+
+                @foreach (var _ParentAccount in @Model._ParentAccounts)
+                {
+                    <option value="@_ParentAccount.Id">@_ParentAccount.Name</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+}
