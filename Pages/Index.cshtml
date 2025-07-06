@@ -5,6 +5,16 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Qtec - Mini Account Management System</h1>
-    <p>Developed By Adnan Sami (Work In Progress)</p>
+
+
+
+    <img src="~/__Qtec.jpg" height="100px" width="100px" />
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <h1>Welcome, @User.Identity.Name</h1>
+    }
+    else
+    {
+        <h1>Welcome To Qtec</h1>
+    }
 </div>

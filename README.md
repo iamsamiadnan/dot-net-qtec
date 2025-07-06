@@ -10,7 +10,7 @@ I used the **ASP.NET Core Razor Pages** template to build this project, followin
 
 ### 1. User Roles & Permissions
 
-- I registered users using the **Identity Framework** and assigned a default role during registration.
+- I registered users using the **Identity Framework** and assigned a default role **Viewer** during registration.
 - I used **ADO.NET** to perform transactions when updating user information and roles.
 - Only users with the **Admin** role can access this module.
 - The Admin can:

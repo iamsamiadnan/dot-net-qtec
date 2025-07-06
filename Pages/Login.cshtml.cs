@@ -32,14 +32,14 @@ namespace dot_net_qtec.Pages
         public async Task<IActionResult> OnPost()
         {
 
-            var result = await _signInManager.PasswordSignInAsync(_LoginDto.UserName!, _LoginDto.Password!, true, false);
+            var result = await _signInManager.PasswordSignInAsync(_LoginDto.UserName!, _LoginDto.Password!, false, false);
 
             if (result.Succeeded)
             {
-                return RedirectToPage('/');
+                return RedirectToPage("Index");
             }
 
-            return RedirectToPage("/Login");
+            return RedirectToPage("Login");
         }
     }
 }
