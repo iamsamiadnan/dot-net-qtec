@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace dot_net_qtec.Pages.Accountant.Accounts
 {
-    [Authorize(Roles = "Accountant")]
+    [Authorize(Roles = "accountant")]
     public class IndexModel : PageModel
     {
 

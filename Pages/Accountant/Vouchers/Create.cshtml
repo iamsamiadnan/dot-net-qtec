@@ -11,8 +11,8 @@
             <label>Voucher Category</label>
             <select asp-for="_CreateVoucherDto.Category">
                 <option value="journal" selected>Journal</option>
-                <option value="payment" selected>Payment</option>
-                <option value="receipt" selected>Receipt</option>
+                <option value="payment">Payment</option>
+                <option value="receipt">Receipt</option>
             </select>
         </div>
 
@@ -47,10 +47,14 @@
             <tbody>
                 <tr></tr>
                 <tr>
-                    Account
-                    <select name="accountId">
-                        <option value="2">Cash</option>
-                        <option value="3">Bank Accounts</option>
+                    Select
+
+                    <select name="accountId" asp-for="_SubAccountDto.Id">
+
+                        @foreach (var _SubAccount in @Model._SubAccounts)
+                        {
+                            <option value="@_SubAccount.Id">@_SubAccount.Name</option>
+                        }
                     </select>
                 </tr>
                 <tr>&nbsp;Debit <input type="number" name="debit" step="any" /></tr>
@@ -69,6 +73,7 @@
         const entryForm = document.getElementById('entry-form');
         entryForm.addEventListener('submit', (event) => {
             event.preventDefault();
+            console.log(event.target.elements);
             const { accountId, debit, credit } = event.target.elements;
 
             entries[Object.keys(entries).length + 1] = {

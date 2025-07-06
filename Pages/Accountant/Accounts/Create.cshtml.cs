@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace dot_net_qtec.Pages.Accountant.Accounts
 {
-    [Authorize(Roles = "Accountant")]
+    [Authorize(Roles = "accountant")]
     public class CreateModel : PageModel
     {
 
