@@ -28,6 +28,10 @@ I used the **ASP.NET Core Razor Pages** template to build this project, followin
 
 - Add a **Delete User** feature.
 
+<img src="read-me-images/users-index.jpg">
+<img src="read-me-images/users-create.jpg">
+<img src="read-me-images/users-edit.jpg">
+
 ---
 
 ### 2. Chart of Accounts
@@ -48,11 +52,16 @@ I used the **ASP.NET Core Razor Pages** template to build this project, followin
 
 ---
 
+<img src="read-me-images/accounts-index.jpg">
+<img src="read-me-images/accounts-create.jpg">
+
 ### 3. Voucher Entry Module
 
 - Accountants can create vouchers using a form.
 - Each voucher can have **multiple debit and credit entries**.
 - I used **SQL Transactions** and **Table-Valued Parameters (TVP)** to handle bulk inserts efficiently and safely.
+
+<img src="read-me-images/vouchers-create.jpg">
 
 ---
 
